@@ -25,6 +25,7 @@ class ofApp : public ofBaseApp{
 		
 //    float sensorPanelDist; //the distance between ultraSonic sensor and panels
     ofSoundPlayer waterSound;
+    ofSoundPlayer birdSound;
     //Custom variables for on screen string and font.
     string msg;
 

@@ -6,6 +6,7 @@ int byteData;
 //--------------------------------------------------------------
 void ofApp::setup(){
     waterSound.load("Sounds_Study_Sleep_.wav");
+    birdSound.load("198376__bunting__dscn0099.wav");
     //General setup of look of window.
     ofBackground(255);
 
@@ -41,31 +42,52 @@ void ofApp::update(){
     }
 //    //float sensorPanelDist
 //    sensorPanelDist = n;
-    //Trigger different sound/music by the distance
+    //Trigger different sound/music by the› distance
     // "i" = the dist between the sensor and panels
     //Finding Ultra Sonic Sensor Distance(unit/cm)
 
     
-    if ( byteData > 10) {
-        
-        state = 0;
-//        msg = "worked";
-    }else{
+//    if ( byteData > 10) {
+//        
+//        state = 1;
+////        msg = "worked";
+//    }else{
+//        state = 0;
+//
+//    }
+    
+    if(byteData >=20){
+        ofSetColor(255, 0, 0);
         state = 1;
-
+    }else if(byteData >= 15 && byteData<20){
+        ofSetColor(0,255,0);
+        state = 2;
+    }else if(byteData >= 10 && byteData<15){
+        ofSetColor(0, 0, 255);
+        state = 3;
+    }else {
+        state = 0; //if nothing is detected
     }
+    
     cout << state << endl;
     
     }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
-    if(state == 1){
-        
-        waterSound.play();
 
+    if(state == 1){
+        waterSound.play();
+    }else if ( state == 2){
+        birdSound.play();
+//    }else if (state == 0){
+//        waterSound.stop();
+//        birdSound.stop();
     }
+
+//    }else{
+//        waterSound.stop();
+//    }
     //drawing the string version pf byteData on oF window.
     font.drawString(msg, 50, 100);
     
